@@ -5,28 +5,27 @@ import SearchBox from '../components/SearchBox';
 //import { robots } from './Robots';
 import Scroll from '../components/Scroll';
 import Errorboundary from '../components/ErrorBoundary';
-import { setSearchField } from '../Actions';
+import { setSearchField } from '../actions';
 
 const mapStateToProps = state => {
     return {
-        searchfield: state.searchRobots.searchField,
+        searchField: state.searchField,
     }
 }
 
 const mapDispatchToProps = dispatch => {
-    //the following property name can be anything
     return {
+        //the following property name can be anything
         onSearchChange: (event) => dispatch(setSearchField(event.target.value))
     }
 }
 
 class App extends Component {
-
     constructor() {
         super();
         this.state = {
             robots: [],
-            //searchfield: ''
+            searchField: ''
         }
     }
 
@@ -44,9 +43,9 @@ class App extends Component {
     }*/
 
     render() {
-        const { robots, searchfield } = this.state;
+        const { robots, searchField } = this.state;
         const filteredRobots = robots.filter(robot => {
-            return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+            return robot.name.toLowerCase().includes(searchField.toLowerCase());
         });
 
         //       if (robots.length === 0) {

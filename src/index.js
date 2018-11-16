@@ -9,12 +9,11 @@ import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 import { searchRobots } from './reducers';
 
-
-//const store = createStore(rootReducer); 
+//const store = createStore(rootReducer); <-- the parameter is the reducer(s)
 const store = createStore(searchRobots); 
 
-
 ReactDOM.render(
+    
     <Provider store={ store }>
         <App />
     </Provider>
