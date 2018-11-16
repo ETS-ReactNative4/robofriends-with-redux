@@ -25,7 +25,7 @@ class App extends Component {
         super();
         this.state = {
             robots: [],
-            searchField: ''
+            //searchField: ''
         }
     }
 
@@ -43,7 +43,9 @@ class App extends Component {
     }*/
 
     render() {
-        const { robots, searchField } = this.state;
+        //const { robots, searchField } = this.state;
+        const { robots } = this.state;
+        const { searchField, onSearchChange } = this.props;
         const filteredRobots = robots.filter(robot => {
             return robot.name.toLowerCase().includes(searchField.toLowerCase());
         });
@@ -63,10 +65,10 @@ class App extends Component {
             (
                 <div className='tc'>
                     <h1 className='f2'>RoboFriends</h1>
-                    <SearchBox searchChange={this.searchChanges} />
+                    <SearchBox searchChange={ onSearchChange } />
                     <Scroll>
                         <Errorboundary>
-                            <Cardlist robots={filteredRobots} />
+                            <Cardlist robots={ filteredRobots } />
                         </Errorboundary>
                     </Scroll>
                 </div>
